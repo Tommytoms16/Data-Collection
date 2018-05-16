@@ -412,7 +412,7 @@ double total = 0.0;
         average = total / a.length;
         
         double zScore = ((x-average)/stdev);
-        System.out.println(zScore);
+        System.out.println("Z-Score is:" + zScore);
          
      }
     
@@ -437,17 +437,19 @@ double total = 0.0;
         }
         double variance = variance1 / (num - 1);
         double standardDaviation= Math.sqrt(variance);
-        double lower = ave - 1.96 * standardDaviation;
-        double higher = ave + 1.96 * standardDaviation;
+        double low = ave - 1.96 * standardDaviation;
+        double high = ave + 1.96 * standardDaviation;
 
         // print results
         System.out.println("average          = " + ave);
-        System.out.println("sample variance  = " + variance);
-        System.out.println("sample standard daviation    = " + standardDaviation);
+        System.out.println("variance  = " + variance);
+        System.out.println("standard daviation    = " + standardDaviation);
         System.out.println("approximate confidence interval");
-        System.out.println("[ " + lower + ", " + higher + " ]");
+        System.out.println("[ " + low + ", " + high + " ]");
          
      }
     
+     
+
      
      }
