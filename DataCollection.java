@@ -417,31 +417,52 @@ double total = 0.0;
      }
     
     public static void confidenceInterval() {
-        int maximumNumber = 10;
-        int num = 0;
-        double[] data = new double[maximumNumber];
-
-        // first pass: read in data, compute sample mean
-        double dataSum = 0.0;
-        while (num<maximumNumber) {
-            data[num] = num*10;
-            dataSum  += data[num];
-            num++;
+        int n;
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter no. of elements you want in array: ");
+        n = input.nextInt();
+        int a[] = new int[n];
+        System.out.println("Enter all the elements: ");
+        double total = 0.0;
+        double grade;
+        double average = 0.0;
+        double counter = 0.0;
+        
+        while (counter < a.length) {
+            grade = input.nextDouble();
+            total = total + grade;
+            counter++;
+            
         }
-        double ave = dataSum / num;
+        average = total / a.length;
+        
+        System.out.println("The average is: " + average); 
+        System.out.println("re enter the elements of the array");
+        
+         double count = 10.0;   // is 10.0 for your problem
+double sum1 = 0.0;    // sum of the numbers
+double sum2 = 0.0;    // sum of the squares
+int i;
+ counter = 0;
+while ( counter < a.length) {
+   n = input.nextInt();
+  sum1 += n;
+  sum2 += n * n;
+  counter++;
+}
+
+double variance = (count * sum2 - sum1 * sum1) / (count * count);
 
 
-        double variance1 = 0.0;
-        for (int i = 0; i < num; i++) {
-            variance1 += (data[i] - ave) * (data[i] - ave);
-        }
-        double variance = variance1 / (num - 1);
+
+
+
+       
         double standardDaviation= Math.sqrt(variance);
-        double low = ave - 1.96 * standardDaviation;
-        double high = ave + 1.96 * standardDaviation;
+        double low = average - 1.96 * standardDaviation;
+        double high = average + 1.96 * standardDaviation;
 
-        // print results
-        System.out.println("average          = " + ave);
+        
         System.out.println("variance  = " + variance);
         System.out.println("standard daviation    = " + standardDaviation);
         System.out.println("approximate confidence interval");
