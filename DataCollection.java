@@ -36,7 +36,7 @@ public class DataCollection {
        standardDeviation();
        Variance();
        zScore(30);
-       confidenceInterval();
+       confidenceInterval(1.96);
      
       
       
@@ -416,7 +416,7 @@ double total = 0.0;
          
      }
     
-    public static void confidenceInterval() {
+    public static void confidenceInterval(double z) {
         int n;
         Scanner input = new Scanner(System.in);
         System.out.print("Enter no. of elements you want in array: ");
@@ -459,8 +459,8 @@ double variance = (count * sum2 - sum1 * sum1) / (count * count);
 
        
         double standardDaviation= Math.sqrt(variance);
-        double low = average - 1.96 * standardDaviation;
-        double high = average + 1.96 * standardDaviation;
+        double low = average - z * standardDaviation;
+        double high = average + z * standardDaviation;
 
         
         System.out.println("variance  = " + variance);
