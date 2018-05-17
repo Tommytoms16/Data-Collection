@@ -23,6 +23,7 @@ public class DataCollection {
    
     public static void main(String [] args)
     {
+        
        myAverage();
        Ascending();
        Descending();
@@ -249,7 +250,7 @@ public static void getMinValue(){
         int maxValue = -1;
         int maxCount = 0;
         int x = 0;
-        //count how many times nums[i] appears in array
+        
 
         int n; 
        Scanner s = new Scanner(System.in);
@@ -260,7 +261,7 @@ public static void getMinValue(){
         
         for (int i = 0; i < a.length; i++) {
 
-            try { //try catch exception to catch decimal inputs as well as more /less than 10 integers
+            try { 
                 x = s.nextInt();
                 a[i]=x;
             } 
@@ -332,7 +333,7 @@ public static void getMinValue(){
         n = s.nextInt();
         int a[] = new int[n];
         System.out.println("Enter elements of array:");
-        double count = 10.0;   // is 10.0 for your problem
+        double count = 10.0;   // is 10.0 for the problem
         double sum1 = 0.0;    // sum of the numbers
         double sum2 = 0.0;    // sum of the squares
         int counter = 0;
@@ -368,7 +369,8 @@ while ( counter < a.length) {
   sum2 += n * n;
   counter++;
 }
-double average = sum1 / count;
+double average;
+        average = sum1 / count;
 double variance = (count * sum2 - sum1 * sum1) / (count * count);
 
 
@@ -424,25 +426,18 @@ double total = 0.0;
         int a[] = new int[n];
         System.out.println("Enter all the elements: ");
         double total = 0.0;
-        double grade;
+        
         double average = 0.0;
         double counter = 0.0;
         
-        while (counter < a.length) {
-            grade = input.nextDouble();
-            total = total + grade;
-            counter++;
-            
-        }
+        
         average = total / a.length;
         
-        System.out.println("The average is: " + average); 
-        System.out.println("re enter the elements of the array");
         
          double count = 10.0;   // is 10.0 for your problem
 double sum1 = 0.0;    // sum of the numbers
 double sum2 = 0.0;    // sum of the squares
-int i;
+
  counter = 0;
 while ( counter < a.length) {
    n = input.nextInt();
@@ -463,8 +458,7 @@ double variance = (count * sum2 - sum1 * sum1) / (count * count);
         double high = average + z * standardDaviation;
 
         
-        System.out.println("variance  = " + variance);
-        System.out.println("standard daviation    = " + standardDaviation);
+        
         System.out.println("approximate confidence interval");
         System.out.println("[ " + low + ", " + high + " ]");
          
