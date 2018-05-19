@@ -1,470 +1,123 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package javaapplication1;
+//
+//  ViewController.swift
+//  Collect
+//
+//  Created by Tommy Medaiyese on 5/17/18.
+//  Copyright © 2018 Tommy Medaiyese. All rights reserved.
+//
 
-import java.util.Arrays;
-import java.util.Scanner;
+import UIKit
+import Foundation
 
-
-
-
-/**
- *
- * @author tommymedaiyese
- */
-public class DataCollection {
-
-    /**
-     * @param args the command line arguments
-     */
-   
-    public static void main(String [] args)
-    {
-        
-       myAverage();
-       Ascending();
-       Descending();
-       Sum();
-       getMinValue();
-       getMaxValue();
-       Occurrence();
-       sampleSize();
-       Mode();
-       Range();
-       standardDeviation();
-       Variance();
-       zScore(30);
-       confidenceInterval(1.96);
-     
-      
-      
-    }  
+class ViewController: UIViewController {
+    @IBOutlet weak var valueA: UITextField!
+    @IBOutlet weak var valueB: UITextField!
+    @IBOutlet weak var valueC: UITextField!
+    @IBOutlet weak var valueD: UITextField!
+    @IBOutlet weak var valueE: UITextField!
+    @IBOutlet weak var valueF: UITextField!
+    @IBOutlet weak var valueG: UITextField!
+    @IBOutlet weak var valueH: UITextField!
+    @IBOutlet weak var valueI: UITextField!
+    @IBOutlet weak var result1: UILabel!
+    @IBOutlet weak var result2: UILabel!
+    @IBOutlet weak var result3: UILabel!
+    @IBOutlet weak var result4: UILabel!
+    @IBOutlet weak var result5: UILabel!
+    @IBOutlet weak var result6: UILabel!
+    @IBOutlet weak var result7: UILabel!
+    @IBOutlet weak var result8: UILabel!
+    @IBOutlet weak var result9: UILabel!
+    @IBOutlet weak var result10: UILabel!
     
-    public static void myAverage()
-    {   
-        int n;
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter no. of elements you want in array: ");
-        n = input.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter all the elements: ");
-        double total = 0.0;
-        double grade;
-        double average = 0.0;
-        double counter = 0.0;
+    
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func calculate(_ sender: Any) {
         
-        while (counter < a.length) {
-            grade = input.nextDouble();
-            total = total + grade;
-            counter++;
+        let a = valueA.text
+        let b = valueB.text
+        let c = valueC.text
+        let d = valueD.text
+        let e = valueE.text
+        let f = valueF.text
+        let g = valueG.text
+        let h = valueH.text
+        let i = valueI.text
+        
+        let total = 9.0
+        
+        let myInt1 = Double(a!)
+        let myInt2 = Double(b!)
+        let myInt3 = Double(c!)
+        let myInt4 = Double(d!)
+        let myInt5 = Double(e!)
+        let myInt6 = Double(f!)
+        let myInt7 = Double(g!)
+        let myInt8 = Double(h!)
+        let myInt9 = Double(i!)
+        
+        let sum = (myInt1! + myInt2! + myInt3! + myInt4! + myInt5! + myInt6! + myInt7! + myInt8! + myInt9!)
+        result1.text = "Sum:\(sum)"
+        
+        let average = (myInt1! + myInt2! + myInt3! + myInt4! + myInt5! + myInt6! + myInt7! + myInt8! + myInt9!) / total
+        result2.text = "Average:\(average)"
+        
+        let power1 = pow(myInt1! - average,2.0)
+        let power2 = pow(myInt2! - average,2.0)
+        let power3 = pow(myInt3! - average,2.0)
+        let power4 = pow(myInt4! - average,2.0)
+        let power5 = pow(myInt5! - average,2.0)
+        let power6 = pow(myInt6! - average,2.0)
+        let power7 = pow(myInt7! - average,2.0)
+        let power8 = pow(myInt8! - average,2.0)
+        let power9 = pow(myInt9! - average,2.0)
+        let powerTotal = power1 + power2 + power3 + power4 + power5 + power6 + power7 + power8 + power9
+        
+        
+        
+        let standardDeviation = sqrt(powerTotal / (total - 1))
+        result3.text = "SD:\(standardDeviation)"
+        
+        let variance = pow(standardDeviation,2.0)
+        result4.text = "Var:\(variance)"
+        
+        let minVal = min(myInt1!, myInt2!, myInt3!,myInt4!, myInt5!, myInt6!, myInt7!, myInt8!, myInt9!)
+        result5.text = "Min:\(minVal)"
+        
+        let maxVal = max(myInt1!, myInt2!, myInt3!,myInt4!, myInt5!, myInt6!, myInt7!, myInt8!, myInt9!)
+        result6.text = "Max:\(maxVal)"
+    
+        let range = maxVal - minVal
+        result7.text = "Range:\(range)"
+        
+        let low = round(average - 1.96 * (standardDeviation / sqrt(total)))
+        let high = round(average + 1.96 * (standardDeviation / sqrt(total)))
+        result8.text = ("CI:\(low,high)")
+        
+        let array = [myInt1!, myInt2!, myInt3!,myInt4!, myInt5!, myInt6!, myInt7!, myInt8!, myInt9!]
+        let myAscending = array.sorted()
+        result9.text = "\(myAscending)"
+        
+        let myDescending = array.sorted
+        {
+            
+            (myInt1, myInt2) -> Bool in
+            return myInt1 > myInt2
             
         }
-        average = total / a.length;
-        System.out.println("The average is: " + average); 
-        
-        
-    } 
-    
-    public static void Ascending()
-    {
-        int n, temp;
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter no. of elements you want in array: ");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter all the elements: ");
-        for (int i = 0; i < n; i++) 
-        {
-            a[i] = s.nextInt();
-        }
-        for (int i = 0; i < n; i++) 
-        {
-            for (int j = i + 1; j < n; j++) 
-            {
-                if (a[i] > a[j]) 
-                {
-                    temp = a[i];
-                    a[i] = a[j];
-                    a[j] = temp;
-                }
-            }
-        }
-        System.out.print("Ascending Order: ");
-        for (int i = 0; i < n - 1; i++) 
-        {
-            System.out.print(a[i] + ",");
-        }
-        System.out.print(a[n - 1]);
+        result10.text = ("\(myDescending)")
     }
     
-    
-    
-       public static void Descending() {
-           
-           
-        int n, temp;
-        Scanner s = new Scanner(System.in);
-        System.out.print(" Enter no. of elements you want in array: ");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter all the elements: ");
-        for (int i = 0; i < n; i++) 
-        {
-            a[i] = s.nextInt();
-        }
-        for (int i = 0; i < n; i++) 
-        {
-            for (int j = i + 1; j < n; j++) 
-            {
-                if (a[i] < a[j]) 
-                {
-                    temp = a[i];
-                    a[i] = a[j];
-                    a[j] = temp;
-                }
-            }
-        }
-        System.out.print("Descending Order:");
-        for (int i = 0; i < n - 1; i++) 
-        {
-            System.out.print(a[i] + ",");
-        }
-        System.out.print(a[n - 1]);
-           
-       }
-        
-      public static void Sum()
-    {
-       
-       Scanner scanner = new Scanner(System.in);
-       System.out.println("Enter the number  of elements you want in array: ");
-       int n = scanner.nextInt();
-       int a[] = new int[n];
-      int sum = 0;
-      System.out.println("Enter the elements:");
-      for (int i=0; i<a.length; i++)
-      {
-    	  a[i] = scanner.nextInt();
-      }
-      for( int num : a) {
-          sum = sum+num;
-      }
-      System.out.println("Sum of array of elements is: "+sum);
-   } 
-      
-    public static void getMaxValue(){
-      
-    int n, max;
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter elements of array:");
-        for(int i = 0; i < n; i++)
-        {
-            a[i] = s.nextInt();
-        }
-        max = a[0];
-        for(int i = 0; i < n; i++)
-        {
-            if(max < a[i])
-            {
-                max = a[i];
-            }
-        }
-        System.out.println("Maximum value:"+max);
-    }
-  
-
-      
-public static void getMinValue(){
-    
-   int n, min;
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter elements of array:");
-        for(int i = 0; i < n; i++)
-        {
-            a[i] = s.nextInt();
-        }
-        min = a[0];
-        for(int i = 0; i < n; i++)
-        {
-            if(min > a[i]) 
-            {
-                min = a[i];
-            }
-        }
-        System.out.println("Minimum value:"+min);
-    }
-
-    public static void Occurrence() {
-    int n; 
-       Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter elements of array:");
-    for( int i=0;i<a.length;i++){
-        a[i] = s.nextInt();
-    }
-    int count=1;
-    Arrays.sort(a);
-    for(int z=0;z<a.length;z++){
-        for(int j=0;j<z;j++){
-            if(a[z]==a[j] & j!=z){
-                count=count+1;
-            }
-        }
-        System.out.print(" The number " + a[z]+" appeared "+count+" times \n ");
-        count=1;
-        }
-    }
-    
-    public static void sampleSize() {
-        
-       Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        int n = s.nextInt();
-        System.out.println("Enter elements of array:");
-        int a[] = new int[n];
-
-        
-        for(int i = 0; i < n; i++)
-        {
-            a[i] = s.nextInt();
-            
-        }
-        System.out.println("The no. of elements in the array is: "+ n);
-     }
-    
-     public static void Mode(){
-        
-        
-
-        int maxValue = -1;
-        int maxCount = 0;
-        int x = 0;
-        
-
-        int n; 
-       Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter elements of array:");
-        
-        for (int i = 0; i < a.length; i++) {
-
-            try { 
-                x = s.nextInt();
-                a[i]=x;
-            } 
-            catch (Exception e) {
-                System.out.println("Invalid input! Please reenter 10 integer values.");
-                i =i -1;
-                s.nextLine();
-
-                continue;
-            }
-        }
-        for (int i = 0; i < a.length; i++) {
-            int count = 0;
-            for (int j = 0; j < a.length; j++) {
-                if (a[j] == a[i]) {
-                    count++;
-                }
-            }
-
-            if (count > maxCount) {
-                maxValue = a[i];
-                maxCount = count;
-
-            }
-        }
-    System.out.println("The mode of the array is: " + maxValue);
-    }  
-     
-     public static void Range(){
-         
-         int n, min, max;
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter elements of array:");
-        for(int i = 0; i < n; i++)
-        {
-            a[i] = s.nextInt();
-        }
-        min = a[0];
-        for(int i = 0; i < n; i++)
-        {
-            if(min > a[i]) 
-            {
-                min = a[i];
-            }
-        }
-        max = a[0];
-        for(int i = 0; i < n; i++)
-        {
-            if(max < a[i]) 
-            {
-                max = a[i];
-            }
-        }
-        int range = max - min;
-        System.out.println("The range is: " + range);
-         
-     }
-     
-     public static void standardDeviation()
-    {
-        
-        int n;
-        
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter elements of array:");
-        double count = 10.0;   // is 10.0 for the problem
-        double sum1 = 0.0;    // sum of the numbers
-        double sum2 = 0.0;    // sum of the squares
-        int counter = 0;
-while ( counter < a.length) {
-   n = s.nextInt();
-  sum1 += n;
-  sum2 += n * n;
-  counter++;
 }
-double average = sum1 / count;
-double variance = (count * sum2 - sum1 * sum1) / (count * count);
-double stdev = Math.sqrt(variance);
-System.out.println("The standard deviation is:"+ stdev);
-        }
-     
-     
-     public static void Variance() {
-         
-         int n;
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter elements of array:");
-       double count = 10.0;   // is 10.0 for your problem
-double sum1 = 0.0;    // sum of the numbers
-double sum2 = 0.0;    // sum of the squares
-int i;
-int counter = 0;
-while ( counter < a.length) {
-   n = s.nextInt();
-  sum1 += n;
-  sum2 += n * n;
-  counter++;
-}
-double average;
-        average = sum1 / count;
-double variance = (count * sum2 - sum1 * sum1) / (count * count);
-
-
-System.out.println("The variance is: " + variance);
-         
-         
-     }
-     
-     public static void zScore(int x) {
-         
-         int n;
-        
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter number of elements in the array:");
-        n = s.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter elements of array:");
-        double count = 10.0;   // is 10.0 for your problem
-        double sum1 = 0.0;    // sum of the numbers
-        double sum2 = 0.0;    // sum of the squares
-        int counter = 0;
-while ( counter < a.length) {
-   n = s.nextInt();
-  sum1 += n;
-  sum2 += n * n;
-  counter++;
-}
-double average = sum1 / count;
-double variance = (count * sum2 - sum1 * sum1) / (count * count);
-double stdev = Math.sqrt(variance);
-
-double total = 0.0;
-        double grade;
-        
-        while (counter < a.length) {
-            grade = s.nextDouble();
-            total = total + grade;
-            counter++;
-            
-        }
-        average = total / a.length;
-        
-        double zScore = ((x-average)/stdev);
-        System.out.println("Z-Score is:" + zScore);
-         
-     }
-    
-    public static void confidenceInterval(double z) {
-        int n;
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter no. of elements you want in array: ");
-        n = input.nextInt();
-        int a[] = new int[n];
-        System.out.println("Enter all the elements: ");
-        double total = 0.0;
-        
-        double average = 0.0;
-        double counter = 0.0;
-        
-        
-        average = total / a.length;
-        
-        
-         double count = 10.0;   // is 10.0 for your problem
-double sum1 = 0.0;    // sum of the numbers
-double sum2 = 0.0;    // sum of the squares
-
- counter = 0;
-while ( counter < a.length) {
-   n = input.nextInt();
-  sum1 += n;
-  sum2 += n * n;
-  counter++;
-}
-
-double variance = (count * sum2 - sum1 * sum1) / (count * count);
-
-
-
-
-
-       
-        double standardDaviation= Math.sqrt(variance);
-        double low = average - z * standardDaviation;
-        double high = average + z * standardDaviation;
-
-        
-        
-        System.out.println("approximate confidence interval");
-        System.out.println("[ " + low + ", " + high + " ]");
-         
-     }
-    
-     
-
-     
-     }
