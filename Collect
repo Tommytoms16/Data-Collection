@@ -2,12 +2,11 @@
 //  ViewController.swift
 //  Collect
 //
-//  Created by Tommy Medaiyese on 5/17/18.
+//  Created by Tommy Medaiyese on 5/19/18.
 //  Copyright © 2018 Tommy Medaiyese. All rights reserved.
 //
 
 import UIKit
-import Foundation
 
 class ViewController: UIViewController {
     @IBOutlet weak var valueA: UITextField!
@@ -38,13 +37,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func calculate(_ sender: Any) {
+    
+    
         
         let a = valueA.text
         let b = valueB.text
@@ -98,7 +99,7 @@ class ViewController: UIViewController {
         
         let maxVal = max(myInt1!, myInt2!, myInt3!,myInt4!, myInt5!, myInt6!, myInt7!, myInt8!, myInt9!)
         result6.text = "Max:\(maxVal)"
-    
+        
         let range = maxVal - minVal
         result7.text = "Range:\(range)"
         
