@@ -1,2 +1,5 @@
-# Data-Collection
-Computes the standard deviation and variance for a given set of data, Calculates the sum for any given set of data , Determines mean, mode, and median for a given data set , Analyzes the lowest and highest data points in the set, Measures the total sample size of the data set, Finds the z-score for any given set of data, Enumerates the confidence interval based on a particular z-score, Prints all the numbers from the data set in descending and ascending order
+# Java Banking
+•	Asks user for information about banking details such as account balance
+•	Allows user to make a deposit or a withdrawal from the account
+•	Prompts user to enter the amount they would like to deposit or withdraw 
+
